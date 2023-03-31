@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano de Treino</title>
+    <style>
+        /* Adicione seu CSS aqui */
+        body {
+            background-color: #1c1c1c;
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 40px;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        form {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .dia {
+            background-color: #2A2A2A;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            background-color: #444;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: #fff;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            color: #fff;
+            cursor: pointer;
+            align-self: center;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .exercicio {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .serie-repeticao {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        input[type="number"] {
+            width: 70px;
+        }
+
+        .logo {
+            width: 200px;
+            height: auto;
+        }
+        @media (max-width: 767px) {
+    form {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    .logo {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 14px;
+    }
+
+    .logo {
+        width: 120px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <img class="logo" src="/FitPlan.png" alt="Plano de Treino Semanal" />
+    <h1>Plano de Treino Semanal</h1>
+    <form action="/gerar-pdf" method="post">
+      <% const daysOfWeek = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo']; %>
+      <% for (let i = 0; i < 7; i++) { %>
+        <div class="dia">
+            <h3><%= daysOfWeek[i] %></h3>
+            <label>Grupo muscular 1: </label>
+            <input type="text" name="grupoMuscular1[<%= i %>]">
+            <% for (let j = 0; j < 5; j++) { %>
+                <div class="exercicio">
+                    <label>Exercício <%= j + 1 %>: </label>
+                    <input type="text" name="exercicio[<%= i %>][0][<%= j %>]">
+                    <div class="serie-repeticao">
+                        <label>Séries: </label>
+                        <input type="number" name="series[<%= i %>][0][<%= j %>]">
+                        <label>Repetições: </label>
+                        <input type="number" name="repeticoes[<%= i %>][0][<%= j %>]">
+                    </div>
+                </div>
+            <% } %>
+            <label>Grupo muscular 2: </label>
+            <input type="text" name="grupoMuscular2[<%= i %>]">
+            <% for (let j = 0; j < 5; j++) { %>
+                <div class="exercicio">
+                    <label>Exercício <%= j + 1 %>: </label>
+                    <input type="text" name="exercicio[<%= i %>][1][<%= j %>]">
+                    <div class="serie-repeticao">
+                        <label>Séries: </label>
+                        <input type="number" name="series[<%= i %>][1][<%= j %>]">
+                        <label>Repetições: </label>
+                        <input type="number" name="repeticoes[<%= i %>][1][<%= j %>]">
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    <% } %>
+    
+        <button type="submit">Exportar para PDF</button>
+    </form>
+</body>
+</html>

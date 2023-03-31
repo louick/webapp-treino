@@ -1,0 +1,89 @@
+body {
+  background-color: #218838;
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+#container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.day {
+  flex: 1;
+  min-width: 300px;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.day-name {
+  margin-bottom: 1rem;
+}
+
+.muscle-group {
+  margin-bottom: 1.5rem;
+}
+
+.group-name {
+  margin-bottom: 1rem;
+}
+
+.exercise {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.exercise-name,
+.exercise-reps,
+.exercise-series {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-exercise-btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-exercise-btn:hover {
+  background-color: #0056b3;
+}
+
+#export-form {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+#export-form button {
+  background-color: #28a745;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#export-form button:hover {
+  background-color: #218838;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>FitPlan by louick</title>
+    <style>
+        body {
+            background-color: rgb(222, 222, 222);
+            font-family: 'Helvetica', sans-serif;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        h1 {
+          font-family:Arial, Helvetica, sans-serif;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h3 {
+          text-align: center;
+            font-size: 25px;
+            margin-bottom: 10px;
+            font-weight:bold;
+            font-style: italic;
+        }
+
+        .dia {
+            border: 1px solid #999;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #2A2A2A;
+            color: #fff;
+        }
+
+        p {
+          font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 0 0 10px;
+        }
+
+        .exercicio {
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .grupo-muscular {
+          font-family:Arial, Helvetica, sans-serif;
+          font-size: larger;
+        }
+        
+    </style>
+</head>
+<body>
+  <h1>Rotina de Treinos</h1>
+  <% const daysOfWeek = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo']; %>
+  <% for (let i = 0; i < 7; i++) { %>
+      <div class="dia">
+          <h3><%= daysOfWeek[i] %></h3>
+          <p class="grupo-muscular">Grupo muscular 1: <%= grupoMuscular1[i] %></p>
+          <% for (let j = 0; j < 5; j++) { %>
+              <p>
+                  Exercício <%= j + 1 %>: <%= exercicio[i][0][j] %><br>
+                  Séries: <%= series[i][0][j] %><br>
+                  Repetições: <%= repeticoes[i][0][j] %>
+              </p>
+          <% } %>
+          <p class="grupo-muscular">Grupo muscular 2: <%= grupoMuscular2[i] %></p>
+          <% for (let j = 0; j < 5; j++) { %>
+              <p>
+                  Exercício <%= j + 1 %>: <%= exercicio[i][1][j] %><br>
+                  Séries: <%= series[i][1][j] %><br>
+                  Repetições: <%= repeticoes[i][1][j] %>
+              </p>
+          <% } %>
+      </div>
+  <% } %>
+</body>
+
+
+</html>
